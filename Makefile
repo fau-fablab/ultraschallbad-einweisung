@@ -1,0 +1,2 @@
+TARGET=Einweisung_Ultraschallbad
+include fablab-document/Makefile.include
