@@ -1,5 +1,5 @@
 Ultraschallbad Einweisung
-=====================
+=========================
 
 Einweisung des [FAU FabLab](https://fablab.fau.de) in das [Ultraschallbad](https://fablab.fau.de/tool/ultraschallbad).
 
@@ -15,6 +15,7 @@ git clone --recursive git@github.com:fau-fablab/ultraschallbad-einweisung.git
 Technische Details zum Buildserver siehe auf macgyver `/home/buildserver/README`
 
 [![Build Status](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/status.svg)](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/)
+[![TODOs](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/status-todos.svg)](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/)
 
 Lizenz
 ------
