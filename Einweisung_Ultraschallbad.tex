@@ -11,13 +11,7 @@
 \usepackage{booktabs} % für Tabellen: fancy \addlinespace und besondere Querlinien 
 \usepackage{pdfpages} % für \includepdf
 
-\usepackage[colorinlistoftodos,prependcaption]{todonotes}
-\presetkeys%
-    {todonotes}%
-    {inline,backgroundcolor=red}{}
-\newcommand{\todoUnwichtig}[1]{\textbf{TODO: #1} }
 \renewcommand{\texteuro}{\euro}
-%\newcommand{\todo}[1]{\textbf{\color{red}{TODO: #1}}}
 \newcommand{\pfeil}{\ensuremath{\rightarrow}}
 \newcommand{\kommando}[1]{\texttt{#1}}
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
@@ -121,7 +115,24 @@ Wird der Schalter nach rechts gedreht läuft das Bad für die eingestellte Anzah
 
 
 \section{Tipps}
-Anfangs das Ultraschallbad im Pulsbetrieb (50 \%) verwenden und ab und zu kurz ausschalten, damit sich Luftblasen lösen können.
+\subsection{Entgasen}
+In frischem Leitungswasser sind größere Mengen Gase gelöst.
+Diese fallen beim Betrieb aus und verringern die Effizienz des Bades.
+
+Um diesen Effekt zu vermeiden, empfiehlt es sich das Wasser vor der Verwendung zu entgasen.
+Dazu wird das Bad mit Wasser befüllt und für 10 Minuten ohne Siebeinsatz eingeschalten.
+Es werden sich deutliche Blasen bilden.
+Vorzugsweise wird Wasser aus der Heißwasserleitung verwendet.
+Dieses ist bereits vorgeheizt, wodurch es schneller die gewünschte Temperatur erreicht und weniger Gase enthält.
+Außerdem steht dieses Wasser länger und konnte deswegen auch schon ausgasen.
+
+Trotzdem setzen sich Luftblasen an Schwingungsbäuchen des Ultraschallfeldes ab.
+Um diese zu lösen, ist es empfehlenswert das Ultraschallbad anfangs im Pulsbetrieb (50 \%) zu verwenden und ab und zu kurz auszuschalten, damit sich die Luftblasen lösen können.
+
+\subsection{Empfindliche Gegenstände}
+Empfindliche Gegenstände wie Brillen, Linsen mit Vergütung und Schmuckgegenstände sollten nicht mit voller Leistung gereinigt werden.
+Unter Umständen ist eine Reinigung gar nicht empfehlenswert.
+Manche Vergütungen können beispielsweise abplatzen.
 
  \section{Quellen}
   \begin{itemize}
@@ -132,5 +143,7 @@ Anfangs das Ultraschallbad im Pulsbetrieb (50 \%) verwenden und ab und zu kurz a
 
 
 \ccLicense{ultraschallbad-einweisung}{Einweisung Ultraschallbad}
+
+Dieses Dokument stammt aus fau-fablab/ultraschallbad-einweisung@\Revision{}.
 
 \end{document}
