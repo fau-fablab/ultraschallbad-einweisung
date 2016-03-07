@@ -3,7 +3,7 @@ Ultraschallbad Einweisung
 
 Einweisung des [FAU FabLab](https://fablab.fau.de) in das [Ultraschallbad](https://fablab.fau.de/tool/ultraschallbad).
 
-Die neueste Version der Einweisung aus [github](https://github.com/fau-fablab/ultraschallbad-einweisung) ist als PDF unter https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/Einweisung_Ultraschallbad.pdf abrufbar.
+Die neueste Version der Einweisung aus [github](https://github.com/fau-fablab/ultraschallbad-einweisung) ist als PDF unter https://brain.fablab.fau.de/build/ultraschallbad-einweisung/Einweisung_Ultraschallbad.pdf abrufbar.
 
 auschecken
 ----------
@@ -14,8 +14,8 @@ git clone --recursive git@github.com:fau-fablab/ultraschallbad-einweisung.git
 
 Technische Details zum Buildserver siehe auf macgyver `/home/buildserver/README`
 
-[![Build Status](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/status.svg)](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/)
-[![TODOs](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/status-todos.svg)](https://user.fablab.fau.de/~buildserver/ultraschallbad-einweisung/)
+[![Build Status](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/status.svg)](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/)
+[![TODOs](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/status-todos.svg)](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/)
 
 Lizenz
 ------
