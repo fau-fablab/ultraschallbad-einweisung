@@ -1,148 +1,358 @@
+% !TeX spellcheck = de_DE_frami
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% COPYRIGHT: (C) 2012-2015 FAU FabLab and others
+% COPYRIGHT: (C) 2012-2026 FAU FabLab and others
 % CC-BY-SA 3.0
-% EXCEPT for the "Betriebsanweisung" pages!
+% Text in eigenen Worten, KEINE Passagen oder Abbildungen aus der
+% EMAG-Bedienungsanleitung übernehmen (Herstellerangaben nur sinngemäß).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \newcommand{\basedir}{fablab-document} % Pfad zur Dokumentenvorlage
 \documentclass{\basedir/fablab-document}
 
-\usepackage{booktabs} % für Tabellen: fancy \addlinespace und besondere Querlinien 
-\usepackage{pdfpages} % für \includepdf
+\usepackage{caption}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{qrcode}
+\usepackage{fablab-document/fablab-ba} % Betriebsanweisung Gefahrstoff
 
-\renewcommand{\texteuro}{\euro}
-\newcommand{\pfeil}{\ensuremath{\rightarrow}}
-\newcommand{\kommando}[1]{\texttt{#1}}
-\newcommand{\tabitem}{~~\llap{\textbullet}~~}
-\newcommand{\mcc}[1]{\multicolumn{2}{c}{#1}}
 \renewcaptionname{ngerman}{\tablename}{Tab.}
 \renewcaptionname{ngerman}{\figurename}{Abb.}
 
-\hyphenation{%
-	}
+\newcommand{\ra}{$\Rightarrow$}
+% Sicherheitszeichen (ISO 7010) und GHS-Piktogramme aus fablab-document/ba-symbole
+\newcommand{\sym}[1]{\includegraphics[width=11mm]{\basedir/ba-symbole/#1}}
+% Nummer wie in der Abbildung des Bedienpanels
+\newcommand{\nr}[1]{\tikz[baseline=-0.6ex]\node[circle, draw=black, fill=white, line width=0.8pt, inner sep=0pt, minimum size=4.2mm, font=\bfseries\footnotesize] {#1};}
 
-% \linespread{1.2}
-
-%\fancyhead[C]{\textbf{\color{red}{TODO: unfertig!}}}
-\date{2015}
+\date{\today}
+% Versionsnummer: version.tex wird von der GitHub Action erzeugt,
+% lokal steht stattdessen "Entwurf" mit Datum in der Fußzeile.
+\InputIfFileExists{version}{}{\newcommand{\Version}{Entwurf \today}}
+\fancyfoot[R]{Version \Version}
 \author{kontakt@fablab.fau.de}
 \title{Einweisung Ultraschallbad}
 
 \begin{document}
+
 	\maketitle
-	
-Zur Reinigung von geeigneten Objekten steht ein Emag Emmi-30HC Ultraschallbad zur Verfügung.
-Dieses Gerät ist nicht mit Supermarktprodukten niedriger Leistungsklassen zu verwechseln.
-Deshalb muss bei der Bedienung auf die folgenden Anweisungen geachtet werden, um Gefährdungen für Mensch und Maschine auszuschließen.
-	
-\section{Gefahren}
-\subsection{Für Benutzer und Umfeld}
-Das Ultraschallbad versetzt die darin befindliche Flüssigkeit in starke Schwingungen im Ultraschallbereich und löst somit Verschmutzungen.
-Dieser Effekt wirkt auch auf Körperteile, die im Betrieb in Kontakt mit der Flüssigkeit kommen.
-\textbf{Es kann somit zu massiven Schädigungen der Knochensubstanz bei Hineinhalten von Körperteilen kommen.}
+	\begin{center}
+		Für das Ultraschallbad \textbf{EMAG Emmi-30HC} mit Heizung\\[1mm]
+		{\small Version \Version}
+	\end{center}
 
-Durch die eingebaute Heizung und die verhältnismäßig große Querschnittsfläche des Behältnisses wird die Verdampfung des Flüssigkeitsmediums begünstigt.
-\textbf{Bei Einsatz von Lösemitteln oder anderen reizenden und/oder giftigen Substanzen entstehen reizende und/oder giftige Dämpfe.}
+	\textbf{Nur eingewiesene Benutzer dürfen das Ultraschallbad selbstständig benutzen, auch nicht unter Anleitung.}
+	Wenn du noch nicht eingewiesen bist, frage einen Betreuer. Nach der Einweisung und Unterschrift darfst du das Bad selbstständig verwenden.
 
-Wenn der Hauptschalter auf \enquote{on} steht, kann das Gerät über geringfügige Drehung des Zeitschalters aktiviert werden.
-\textbf{Es besteht somit die Gefahr des unbeabsichtigten Einschaltens.}
+	\section{Allgemeine Sicherheitshinweise}
 
-\subsection{Für das Gerät}
-Das Flüssigkeitsgefäß des Ultraschallbades ist nicht beständig gegenüber Säuren und Laugen.
-Es darf also nicht mit diesen befüllt werden.
+	\begin{center}
+		\small
+		\renewcommand{\arraystretch}{1.15}
+		\renewcommand{\tabularxcolumn}[1]{m{#1}}
+		\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}m{25mm}|X|}
+			\hline
+			\sym{P010} &
+			\textbf{Nicht in das Bad greifen, solange der rote Hauptschalter an ist.}
+			Der Ultraschall wirkt auch auf Haut, Gewebe und Knochenhaut. Der Zeitschalter allein reicht nicht: Schon eine kleine Drehung schaltet das Bad wieder ein. \\ \hline
+			\sym{W017} &
+			\textbf{Heiße Flüssigkeit.} Die Heizung erwärmt das Bad auf bis zu 80\,\textcelsius{}, Wanne und Rand werden heiß. Heizung nur zusammen mit dem Zeitschalter verwenden, nie im Dauerbetrieb ($\infty$). \\ \hline
+			\sym{W012}\,\sym{M006} &
+			\textbf{Wasser und 230\,V.} Das Gerät ist nicht spritzwassergeschützt (IP\,20). Vor dem Befüllen und Entleeren den \textbf{Netzstecker ziehen}. Kein Wasser auf Bedienfeld, Netzanschluss oder in die Lüftungsschlitze im Boden. \\ \hline
+			\sym{GHS05}\,\sym{M004} &
+			\textbf{Reinigerkonzentrat.} Ultraschallreiniger wie EMAG EM-080 sind als \enquote{Gefahr} eingestuft: Sie reizen die Haut und können die Augen schwer schädigen. Beim Dosieren Schutzbrille und Handschuhe tragen. Es gilt die Betriebsanweisung auf der letzten Seite (Abschnitt~\ref{sec:ba-reiniger}). \\ \hline
+			\sym{W021} &
+			\textbf{Nur Wasser mit Ultraschallreiniger oder Spülmittel.} Keine Lösemittel, kein Alkohol oder Isopropanol, keine Säuren oder Laugen: Brennbare oder giftige Dämpfe entstehen durch Heizung und Ultraschall besonders schnell, und die Wanne wird angegriffen. \\ \hline
+			\sym{W001} &
+			\textbf{Gerät schützen.} Nur mit Einhängekorb und nur mit Wasser bis zur Markierung betreiben. Teile auf dem Wannenboden oder zu wenig Wasser zerstören die Ultraschallwandler. \\ \hline
+		\end{tabularx}
+	\end{center}
 
-Bei zu geringem Flüssigkeitsspiegel wird der Ultraschallwandler überlastet und zerstört.
-Ebenso kann das Bad Schaden nehmen, wenn andere Flüssigkeiten als die in dieser Einweisung aufgeführten
-verwendet werden oder zu reinigende Objekte ohne den Einhängekorb direkt auf dem Boden des Gefäßes liegen.
+	\begin{itemize}
+		\item Im Betrieb \textbf{etwa alle 10 Minuten} nach dem Bad sehen und den Füllstand prüfen. Deckel aufsetzen, damit niemand hineingreift.
+		\item Bei Störungen (ungewöhnliche Geräusche, Wasser im Gehäuse, Geruch): Hauptschalter aus, Netzstecker ziehen, Betreuer informieren.
+		\item \textbf{Ultraschallreiniger bezahlen} (Preis siehe Etikett). Wir freuen uns über eine Spende für die Instandhaltung des Bades.
+	\end{itemize}
 
-\section{Regeln und Verwendung}
-%TODO optional: Diese Sektion etwas schöner gliedern.
-Personen ohne unterschriebene Einweisung dürfen dieses Gerät nicht benutzen, auch nicht unter Anleitung.
-Zuerst ist die Einweisung zu unterschreiben.
+	\newpage
 
-\textbf{Das Ultraschallbad ist nur mit dem Einhängekorb zu verwenden.
-Diesen so in das Gerät einsetzen, dass er nicht auf den Boden aufsetzt und die zu reinigenden Teile darin einlegen.}
-Werden Teile ohne Einhängekorb in das Becken gegeben, kommt es zu einer Beschädigung des Ultraschallbads. Denn die Resonanzfrequenz der Treiber wird dadurch lokal verstimmt, so dass es zu einer Zerstörung der Treiberaufhängung kommt.
+	\renewcommand{\contentsname}{Inhaltsverzeichnis / Arbeitsablauf}
+	\setcounter{tocdepth}{2}
+	\tableofcontents
+	\newpage
 
-Gerät bis zur Markierung mit Wasser füllen. Nur Wasser und gegebenenfalls Ultraschallreiniger verwenden.
-Ersatzweise kann statt Ultraschallreiniger auch Universalreiniger-Konzentrat oder Spülmittel eingesetzt werden.
-Andere Stoffe sind nicht erlaubt.
-Das heißt weder Lösemittel, Alkohol, noch Säuren, Laugen oder sonstige Zusätze.
+	\section{Das Gerät}
 
-Für jegliche Arbeiten (Befüllen, Teile einlegen, und so weiter) den \textbf{roten} Hauptschalter ausschalten.
-Der Zeitschalter ist nicht ausreichend.
-\textbf{Auf keinen Fall in das Bad greifen, während der Hauptschalter auf \enquote{on} steht!}
+	\begin{center}
+		\begin{tabular}{r|l}
+			Hersteller & EMAG \\
+			Modell & Emmi-30HC \\
+			Wanneninhalt & ca.\ 3\,l \\
+			Wanne innen (L $\times$ B $\times$ H) & ca.\ 240 $\times$ 135 $\times$ 100\,mm \\
+			Einhängekorb (L $\times$ B $\times$ H) & ca.\ 205 $\times$ 110 $\times$ 75\,mm \\
+			Ultraschall & 200\,W, 3 Wandler, ca.\ 38\,kHz \\
+			Leistungsregler & 50\,\%, 75\,\%, 100\,\% \\
+			Heizung & 200\,W, einstellbar 20 bis 80\,\textcelsius \\
+			Zeitschalter & 10 bis 60 Minuten oder Dauerbetrieb \\
+			Netzanschluss & 230\,V, 50\,Hz, Schutzkontaktstecker \\
+			Schutzart & IP\,20 (kein Schutz gegen Wasser) \\
+		\end{tabular}
+	\end{center}
 
-\textbf{Im Betrieb regelmäßig (etwa alle 10 Minuten) nach dem Bad schauen und Füllstand kontrollieren.}
-Die Heizung nur mit integrierter Zeitschaltuhr verwenden, nicht auf Dauerbetrieb (Zeichen $\infty$).
-Deckel aufsetzen, damit fremde Personen nicht hineingreifen.
+	Diese Einweisung fasst die Regeln des FabLabs und die wichtigsten Punkte aus der Bedienungsanleitung des Herstellers zusammen. Wo das FabLab strenger ist als der Hersteller, gilt die Regel des FabLabs.
 
-Empfohlener Aufstellungsort ist rechts vom Waschbecken, da das Gerät keine Spritzer des Ätzbades aushält.
+	\subsection{So funktioniert die Reinigung}
 
-Nach Abschluss Kabel ausstecken.
-Wasser nach links hinten ausleeren, sodass es nicht auf die Bedienknöpfe oder den Stromanschluss kommt.
-Gerät ausspülen, trockenwischen und in die Schublade zurückräumen.
+	Unter dem Boden der Edelstahlwanne sitzen drei Ultraschallwandler. Sie bringen den Wannenboden etwa 38\,000-mal pro Sekunde zum Schwingen. In der Flüssigkeit entstehen dabei winzige Bläschen, die sofort wieder zusammenfallen (Kavitation). Dieser Vorgang löst Schmutz auch aus Ritzen, Gewinden und Bohrungen, an die man mit einer Bürste nicht herankommt. Reiniger und Wärme verstärken die Wirkung.
 
-Der Ultraschallreiniger kostet Geld, siehe Etikett.
-Wir bitten außerdem um eine Spende für die Instandhaltung des Ultraschallbades, da es wirklich nicht günstig war.
+	Damit das funktioniert, muss genug Flüssigkeit in der Wanne sein und das Reinigungsgut muss frei in der Flüssigkeit hängen (Abb.~\ref{abb:querschnitt}).
 
-\subsection{Bedienpanel}
+	\begin{figure}[H]
+		\centering
+		\input{zeichnungen/querschnitt}
+		\caption{Schnitt durch das Ultraschallbad: richtig befüllt mit eingehängtem Korb (oben) und falsch (unten)}
+		\label{abb:querschnitt}
+	\end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\linewidth]{img/frontpanel.png}
-\caption[Abbildung des Bedienpanels]{Abbildung des Bedienpanels}
-\end{figure}
+	\subsection{Was darf hinein?}
 
-Der linke Drehschalter kontrolliert die eingebaute Heizung.
-In der obersten Schalterstellung ist die Heizung aus.
-Aktivität wird durch die orangefarbene Betriebsleuchte signalisiert.
+	Geeignet sind Gegenstände aus Metall, Glas, Keramik und den meisten Kunststoffen, die nass werden dürfen, zum Beispiel:
+	\begin{itemize}
+		\item Werkzeuge, Schrauben, Feinmechanik- und Motorteile, Fahrradketten,
+		\item Platinen (z.\,B. Flussmittelreste nach dem Löten), Druckerdüsen, Tuschestifte,
+		\item Brillengestelle und Schmuck (siehe Abschnitt~\ref{sec:empfindlich}).
+	\end{itemize}
 
-Der mittlere Drehschalter mit der Aufschrift \enquote{Ultrasound Efficiency} steuert den Tastgrad.
-Für den normalen Betrieb ist die Stellung 100 \% gedacht.
-In diesem Zustand läuft das Ultraschallbad mit maximaler Leistung.
-Die kleineren Tastgrade dienen hauptsächlich zum Einrichten des Bades.
+	Nicht hinein dürfen:
+	\begin{itemize}
+		\item \textbf{Lebewesen und Körperteile}, also auch keine Finger oder Fingernägel,
+		\item Gegenstände, die nicht nass werden dürfen, z.\,B. Elektronik mit Akku, Displays oder offene Bauteile wie Mikrofone,
+		\item Teile, die größer als der Korb sind oder über den Rand ragen,
+		\item \textbf{geschlossene Behälter}, z.\,B. Flaschen mit kohlensäurehaltigen Getränken oder Sprühdosen: Der Ultraschall setzt gelöstes Gas schlagartig frei, der Behälter kann aufplatzen oder der Inhalt herausspritzen,
+		\item andere Flüssigkeiten als Wasser mit Reiniger, z.\,B. Isopropanol für Resin-Drucke.
+	\end{itemize}
 
-Unter dem mittleren Drehschalter befindet sich der Hauptschalter.
-Ausgestattet mit einer Leuchtanzeige zeigt er an, ob das Gerät eingeschaltet wurde.
-Dieser ist unbedingt auf \enquote{off} zu stellen, bevor in das Bad gegriffen wird.
+	Der Hersteller beschreibt auch, aggressive Flüssigkeiten in einem eingestellten Glasbecher zu verwenden. Das ist im FabLab \textbf{nicht} erlaubt.
 
-Der rechte Drehschalter ist der Zeitschalter, welcher den Betriebsmodus einstellt.
-Wird der Schalter aus der Grundstellung (\enquote{off}) wenige Grad nach links (in Richtung des $\infty$-Zeichens) gedreht, befindet sich das Bad im Dauerbetrieb.
-In diesem Zustand darf die Heizung nicht angeschaltet sein.
-Wird der Schalter nach rechts gedreht, läuft das Bad für die eingestellte Anzahl von Minuten.
+	\subsection{Gefahren für das Gerät}
 
+	\begin{itemize}
+		\item Die Wanne ist nicht beständig gegen Säuren und Laugen.
+		\item Bei zu wenig Wasser werden die Ultraschallwandler überlastet und zerstört. Auch im Dauerbetrieb kann das Bad durch Verdunsten trocken laufen.
+		\item Teile direkt auf dem Wannenboden verstimmen die Resonanz der Wandler. Dadurch kann die Aufhängung der Wandler brechen.
+		\item Wasser im Gehäuse, z.\,B. durch die Lüftungsschlitze im Boden, beschädigt die Elektronik.
+	\end{itemize}
 
-\section{Tipps}
-\subsection{Entgasen}
-In frischem Leitungswasser sind größere Mengen Gase gelöst.
-Diese fallen beim Betrieb aus und verringern die Effizienz des Bades.
+	\subsection{Bedienpanel}
 
-Um diesen Effekt zu vermeiden, empfiehlt es sich, das Wasser vor der Verwendung zu entgasen.
-Dazu wird das Bad mit Wasser befüllt und für 10 Minuten ohne Siebeinsatz eingeschaltet.
-Es werden sich deutliche Blasen bilden.
-Vorzugsweise wird Wasser aus der Heißwasserleitung verwendet.
-Dieses ist bereits vorgeheizt, wodurch es schneller die gewünschte Temperatur erreicht und weniger Gase enthält.
-Außerdem steht dieses Wasser länger und konnte deswegen auch schon ausgasen.
+	\begin{figure}[H]
+		\centering
+		% Markierungen: Koordinaten relativ zum Bild (0,0 = unten links, 1,1 = oben rechts)
+		\begin{tikzpicture}[marke/.style={circle, draw=black, fill=white, line width=1.2pt, minimum size=6.5mm, inner sep=0pt, font=\bfseries\large}]
+			\node[anchor=south west, inner sep=0pt] (bild) at (0,0) {\includegraphics[width=0.7\textwidth]{img/frontpanel.png}};
+			\begin{scope}[x={(bild.south east)}, y={(bild.north west)}]
+				\node[marke] at (0.160, 0.396) {1};
+				\node[marke] at (0.335, 0.620) {2};
+				\node[marke] at (0.400, 0.500) {3};
+				\node[marke] at (0.400, 0.270) {4};
+				\node[marke] at (0.829, 0.396) {5};
+				\node[marke] at (0.770, 0.760) {6};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{Bedienpanel des Emmi-30HC}
+		\label{abb:bedienpanel}
+	\end{figure}
 
-Trotzdem setzen sich Luftblasen an Schwingungsbäuchen des Ultraschallfeldes ab.
-Um diese zu lösen, ist es empfehlenswert, das Ultraschallbad anfangs im Pulsbetrieb (50 \%) zu verwenden und ab und zu kurz auszuschalten, damit sich die Luftblasen lösen können.
+	\begin{enumerate}
+		\item[\nr{1}] \textbf{Heizung:} Solltemperatur von 20 bis 80\,\textcelsius{}. In der obersten Stellung (Zeiger nach oben, wie im Bild) ist die Heizung aus.
+		\item[\nr{2}] \textbf{Kontrollleuchte der Heizung:} leuchtet, solange die Heizung heizt.
+		\item[\nr{3}] \textbf{Ultraschall-Leistung} (\enquote{Ultrasound Efficiency}): 100\,\% für normale Reinigung, 50\,\% oder 75\,\% für empfindliche Gegenstände und zum Lösen von Luftblasen.
+		\item[\nr{4}] \textbf{Roter Hauptschalter} mit Leuchte: schaltet das ganze Gerät ein und aus. \textbf{Vor jedem Griff in das Bad auf \enquote{off} stellen.}
+		\item[\nr{5}] \textbf{Zeitschalter:} startet den Ultraschall, siehe Abb.~\ref{abb:zeitschalter}.
+		\item[\nr{6}] \textbf{Hinweis des Herstellers:} nur mit voller Wanne betreiben, nie mit zu wenig Wasser.
+	\end{enumerate}
 
-\subsection{Empfindliche Gegenstände}
-Empfindliche Gegenstände wie Brillen, Linsen mit Vergütung und Schmuckgegenstände sollten nicht mit voller Leistung gereinigt werden.
-In diesem Fall sollte der Pulsbetrieb (z.\,B. 50\%) verwendet werden.
-Unter Umständen ist eine Reinigung gar nicht empfehlenswert.
-Zum Beispiel können die Vergütungen optischer Gläser abplatzen.
-Auf jeden Fall ist sicherzustellen, dass optische Gläser nicht direkt mit dem Metallkorb in Kontakt kommen.
+	\subsection{Zeitschalter}
 
- \section{Quellen}
-  \begin{itemize}
-   \item Anleitung Ultraschallbad Emag Emmi-30HC
-   \item \href{http://bgi850-0.vur.jedermann.de/index.jsp?isbn=bgi850-0&alias=bgc_bi850_0_bi850_0_s5_2_21_}{BGI 850 5.2.21}
-   \item \href{http://www.arbeitssicherheit.de/de/html/library/document/4989034,37}{DGUV Regel 109-010}
-  \end{itemize}
+	\begin{figure}[H]
+		\centering
+		\input{zeichnungen/zeitschalter}
+		\caption{Skala des Zeitschalters \protect\nr{5}: rechts Zeitbetrieb, links Dauerbetrieb}
+		\label{abb:zeitschalter}
+	\end{figure}
 
+	Der Zeitschalter steht in Grundstellung auf \enquote{off}. Nach rechts gedreht läuft der Ultraschall die eingestellte Zeit und schaltet dann selbst ab. Für jeden neuen Durchgang den Schalter erneut aufdrehen.
 
-\ccLicense{ultraschallbad-einweisung}{Einweisung Ultraschallbad}
+	Schon eine kleine Drehung nach links schaltet den \textbf{Dauerbetrieb} ($\infty$) ein. Der Hersteller rät davon ab, weil das Bad durch Verdunstung trocken laufen kann, und begrenzt ihn auf höchstens 4 Stunden. Im FabLab gilt: Im Dauerbetrieb darf die \textbf{Heizung nicht eingeschaltet} sein. Wann immer möglich, den Zeitbetrieb verwenden.
+
+	\section{Vorbereitung}
+
+	Abb.~\ref{abb:ablauf} zeigt, wie eine Reinigung abläuft. Die einzelnen Schritte sind in diesem und den folgenden Abschnitten genauer beschrieben.
+
+	\begin{figure}[H]
+		\centering
+		\input{zeichnungen/ablauf}
+		\caption{Arbeitsablauf am Ultraschallbad}
+		\label{abb:ablauf}
+	\end{figure}
+
+	\subsection{Aufstellen}
+
+	\begin{itemize}
+		\item Das Bad steht in der Schublade. Zum Arbeiten \textbf{rechts vom Waschbecken} aufstellen, nicht in der Nähe des Ätzbades: Spritzer davon greifen das Gerät an.
+		\item Auf eine ebene, trockene Fläche stellen. Die Lüftungsschlitze im Boden dürfen nicht im Nassen stehen.
+		\item Netzkabel so legen, dass der Stecker jederzeit frei zugänglich ist und nicht in Wasserpfützen liegt.
+	\end{itemize}
+
+	\subsection{Befüllen}
+
+	\begin{itemize}
+		\item Netzstecker ist gezogen, Hauptschalter steht auf \enquote{off}.
+		\item Wanne mit Wasser \textbf{bis zur Markierung} füllen, das ist etwa 1\,cm unter dem Rand. Am besten warmes Wasser aus der Heißwasserleitung verwenden (siehe Abschnitt~\ref{sec:entgasen}).
+		\item Erst danach den Netzstecker einstecken.
+	\end{itemize}
+
+	\subsection{Reiniger}
+
+	Reines Wasser reinigt schon recht gut. Mit Reiniger löst sich Fett und Schmutz deutlich besser.
+
+	\begin{itemize}
+		\item Erlaubt sind nur der \textbf{Ultraschallreiniger} des FabLabs oder ersatzweise \textbf{Universalreiniger-Konzentrat} oder \textbf{Spülmittel}. Andere Zusätze sind nicht erlaubt.
+		\item Dosierung laut Etikett. Beim Universalreiniger EMAG EM-080 sind es 1 bis 3\,\%, bei 3\,l Wasser also etwa 30 bis 90\,ml. Spülmittel reichen wenige Spritzer.
+		\item Konzentrat beim Dosieren nicht auf Haut oder in die Augen bringen: \textbf{Schutzbrille und Handschuhe} tragen.
+		\item Für den Reiniger gilt die \textbf{Betriebsanweisung} auf der letzten Seite (Abschnitt~\ref{sec:ba-reiniger}). Sie hängt am Ultraschallbad aus und ist Bestandteil dieser Einweisung.
+	\end{itemize}
+
+	\subsection{Entgasen}
+	\label{sec:entgasen}
+
+	In frischem Leitungswasser ist viel Gas gelöst. Im Ultraschall bildet es Bläschen, die die Schwingungen dämpfen und die Reinigung schwächen. Deshalb das Bad vor der ersten Reinigung entgasen:
+
+	\begin{itemize}
+		\item Bad befüllen, Deckel auf, ohne Korb und ohne Teile etwa \textbf{10 Minuten} laufen lassen. Dabei bilden sich deutlich sichtbare Blasen.
+		\item Wasser aus der Heißwasserleitung ist schon vorgewärmt, erreicht die gewünschte Temperatur schneller und hat in der Leitung bereits einen Teil des Gases verloren.
+		\item Setzen sich später Luftblasen an Korb oder Teilen fest, anfangs mit 50\,\% Leistung arbeiten und das Bad zwischendurch kurz ausschalten, damit sich die Blasen lösen.
+	\end{itemize}
+
+	\section{Reinigen}
+
+	\subsection{Teile einlegen}
+
+	\begin{itemize}
+		\item \textbf{Roter Hauptschalter auf \enquote{off}.}
+		\item Teile \textbf{nur in den Einhängekorb} legen, nie direkt auf den Wannenboden.
+		\item Teile nebeneinander legen, nicht stapeln. Stark verschmutzte Seiten nach unten, zu den Ultraschallwandlern hin.
+		\item Korb so in die Wanne hängen, dass er nicht auf dem Boden aufsitzt. Danach den Füllstand prüfen: Die Teile müssen ganz unter Wasser sein, das Wasser darf aber nicht über die Markierung steigen.
+		\item Deckel aufsetzen. Er hält Spritzer und Dämpfe zurück, macht das Bad leiser und verhindert, dass jemand hineingreift.
+	\end{itemize}
+
+	\subsection{Einstellen und starten}
+
+	\begin{itemize}
+		\item Hauptschalter \nr{4} einschalten.
+		\item Leistung \nr{3} auf 100\,\%, bei empfindlichen Teilen auf 50\,\%.
+		\item Bei Bedarf Temperatur \nr{1} einstellen. Warme Flüssigkeit (etwa 40 bis 60\,\textcelsius) löst Fett und Flussmittel besser als kalte.
+		\item Zeitschalter \nr{5} nach rechts auf die gewünschte Zeit drehen. Wie lange es dauert, hängt von der Verschmutzung ab. Meist reichen 5 bis 15 Minuten. Lieber kurz anfangen und bei Bedarf wiederholen.
+	\end{itemize}
+
+	\subsection{Während der Reinigung}
+
+	\begin{itemize}
+		\item \textbf{Nicht in die Flüssigkeit greifen.} Auch nicht \enquote{nur kurz}, um ein Teil umzudrehen.
+		\item Etwa alle 10 Minuten nachsehen: Füllstand, Temperatur, lösen sich die Teile im Korb?
+		\item Der Rand der Wanne wird bei längerem Betrieb warm, mit Heizung auch heiß. Das ist normal.
+		\item Ultraschallbäder erzeugen ein hohes Pfeifen. Der Hersteller empfiehlt, sich bei laufendem Bad nicht länger als 4 Stunden im Abstand von unter 1\,m aufzuhalten. Mit aufgesetztem Deckel ist das Bad leiser.
+	\end{itemize}
+
+	\section{Nach der Reinigung}
+
+	\subsection{Teile entnehmen}
+
+	\begin{itemize}
+		\item \textbf{Roter Hauptschalter auf \enquote{off}}, dann den Korb am Bügel herausheben. Nach dem Heizen ist das Wasser heiß.
+		\item Teile kurz unter fließendem Wasser abspülen. So werden gelöste Schmutzreste und Reiniger entfernt.
+		\item Teile gründlich trocknen, Stahlteile möglichst sofort, damit sie nicht rosten.
+		\item Sind die Teile noch nicht sauber: Wasser wechseln, wenn es stark verschmutzt ist, und den Durchgang wiederholen.
+	\end{itemize}
+
+	\subsection{Entleeren und aufräumen}
+
+	\begin{itemize}
+		\item \textbf{Netzstecker ziehen.} Heißes Wasser vorher abkühlen lassen.
+		\item Wasser am Waschbecken \textbf{nach links hinten} ausleeren, so dass es nicht über Bedienknöpfe oder Netzanschluss läuft.
+		\item Wanne kurz ausspülen und mit einem Lappen trocken reiben. Darauf achten, dass kein Wasser durch die Lüftungsschlitze im Boden in das Gehäuse läuft.
+		\item Gehäuse außen abtrocknen, Gerät mit Korb und Deckel in die Schublade zurückräumen.
+		\item Verbrauchten Reiniger bezahlen.
+	\end{itemize}
+
+	\section{Tipps}
+
+	\subsection{Empfindliche Gegenstände}
+	\label{sec:empfindlich}
+
+	\begin{itemize}
+		\item Brillen, vergütete Linsen und Schmuck nicht mit voller Leistung reinigen, sondern mit 50\,\%.
+		\item Manchmal ist eine Reinigung im Ultraschallbad gar nicht zu empfehlen. Zum Beispiel kann die Vergütung optischer Gläser abplatzen, und manche Edelsteine, Perlen oder geklebte Steine vertragen den Ultraschall nicht.
+		\item Optische Gläser dürfen nicht direkt auf dem Metallkorb oder dem Wannenboden aufliegen. Am besten ein weiches Tuch unterlegen oder die Brille am Bügel einhängen.
+	\end{itemize}
+
+	\subsection{Bessere Reinigung}
+
+	\begin{itemize}
+		\item Gut entgastes, warmes Wasser mit Reiniger reinigt am besten.
+		\item Teile mit Bohrungen und Sacklöchern so legen, dass Luft entweichen kann. Eingeschlossene Luft wird nicht gereinigt.
+		\item Wenige Teile pro Durchgang: Teile, die sich gegenseitig abdecken, werden schlechter sauber.
+	\end{itemize}
+
+	\section{Bei Störungen und Unfällen}
+
+	\subsection{Störungen}
+
+	\begin{itemize}
+		\item Bei ungewöhnlichen Geräuschen, ausbleibendem Ultraschall, Wasser im Gehäuse, Brandgeruch oder beschädigtem Kabel: Hauptschalter aus, \textbf{Netzstecker ziehen}, Betreuer informieren.
+		\item Gerät nicht öffnen und nicht selbst reparieren. Defekte Geräte nicht weiter benutzen und kennzeichnen.
+	\end{itemize}
+
+	\subsection{Erste Hilfe}
+
+	\begin{itemize}
+		\item \textbf{Reiniger im Auge:} sofort bei geöffnetem Lidspalt 10 bis 15 Minuten unter fließendem Wasser spülen, danach zum Augenarzt.
+		\item \textbf{Reiniger auf der Haut:} mit viel Wasser und Seife abwaschen.
+		\item \textbf{Verbrühung:} sofort etwa 10 Minuten mit handwarmem Wasser kühlen, bei größeren Flächen zum Arzt.
+		\item Jeden Unfall einem Betreuer melden. \textbf{Notruf: 112}
+	\end{itemize}
+
+	\section{Infos für Betreuer}
+
+	\begin{itemize}
+		\item Das Gerät ist laut Hersteller wartungsfrei. Wanne gelegentlich auf Lochfraß und Verfärbungen prüfen, Netzkabel und Stecker auf Schäden.
+		\item Elektrische Prüfung nach DGUV Vorschrift 3 gemäß festgelegter Prüffrist.
+		\item Ultraschallreiniger rechtzeitig nachbestellen. Sicherheitsdatenblatt des verwendeten Reinigers bereithalten. Bei einem anderen Produkt die Angaben auf Seite~1 und die Betriebsanweisung anpassen.
+		% Angaben zum Reiniger (GHS05, Dosierung) beziehen sich auf EMAG EM-080,
+		% Sicherheitsdatenblatt Stand 15.05.2023.
+	\end{itemize}
+
+	\section{Quellen}
+
+	\begin{itemize}
+		\item EMAG AG: Bedienungsanleitung Profi-Ultraschall-Reinigungsgeräte Emmi 12HC -- 420HC mit Leistungsregler
+		\item EMAG AG: Sicherheitsdatenblatt EM-080, Stand 15.05.2023
+		\item Sicherheitszeichen nach DIN EN ISO 7010 und GHS-Piktogramme: Wikimedia Commons, gemeinfrei, siehe \texttt{fablab-document/ba-symbole/QUELLEN.md}
+		\item \href{http://bgi850-0.vur.jedermann.de/index.jsp?isbn=bgi850-0&alias=bgc_bi850_0_bi850_0_s5_2_21_}{BGI 850 5.2.21}
+		\item \href{http://www.arbeitssicherheit.de/de/html/library/document/4989034,37}{DGUV Regel 109-010}
+	\end{itemize}
+
+	\begin{center}
+		\begin{tabular}{c}
+			\qrcode[height=2.2cm]{https://emag-germany.de/downloads/} \\[1mm]
+			\href{https://emag-germany.de/downloads/}{Anleitungen und Sicherheitsdatenblätter bei EMAG}
+		\end{tabular}
+	\end{center}
+
+	\ccLicense{ultraschallbad-einweisung}{Einweisung Ultraschallbad}
+
+	% Betriebsanweisung Gefahrstoff als letzte Seite im Format des Aushangs
+	\BAseite[sec:ba-reiniger]{betriebsanweisung/ba_ultraschallreiniger}
+
 \end{document}

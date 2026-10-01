@@ -6,10 +6,16 @@ Einweisung des [FAU FabLab](https://fablab.fau.de) in das [Ultraschallbad](https
 Inhalt
 ------
 
-- Gefahren für Benutzer und Gerät
-- Regeln: nur mit Einhängekorb, nur Wasser und Ultraschallreiniger, Hauptschalter aus vor jedem Eingriff
-- Bedienpanel (Heizung, Tastgrad, Zeitschalter)
-- Tipps: Wasser entgasen, empfindliche Gegenstände
+- Allgemeine Sicherheitshinweise mit Sicherheitszeichen (ISO 7010) und GHS-Piktogramm auf der ersten Seite
+- Inhaltsverzeichnis und Arbeitsablauf als Grafik
+- Das Gerät: technische Daten, Funktionsweise, was hinein darf, Bedienpanel, Zeitschalter
+- Vorbereitung, Reinigen, Nach der Reinigung (Befüllen, Reiniger, Entgasen, Einlegen, Entleeren)
+- Tipps, Störungen und Erste Hilfe, Infos für Betreuer
+- Betriebsanweisung Gefahrstoff für den Ultraschallreiniger EMAG EM-080 (BA-GS-02) auf der letzten Seite,
+  zusätzlich als eigenes PDF zum Aushang
+
+Die Hinweise aus der Bedienungsanleitung von EMAG sind in eigenen Worten wiedergegeben, die Grafiken
+(`zeichnungen/`) sind eigene TikZ-Zeichnungen.
 
 Download
 --------
@@ -18,6 +24,7 @@ Die neueste Version aus [GitHub](https://github.com/fau-fablab/ultraschallbad-ei
 
 - [Einweisung](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/Einweisung_Ultraschallbad.pdf)
 - [Einweisungsliste](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/Einweisungsliste_Ultraschallbad.pdf)
+- [Betriebsanweisung Ultraschallreiniger](https://brain.fablab.fau.de/build/ultraschallbad-einweisung/Betriebsanweisung_Ultraschallreiniger.pdf)
 
 Außerdem baut eine GitHub Action die PDFs bei jedem Push. Auf dem Hauptbranch entsteht dabei ein
 [Release](https://github.com/fau-fablab/ultraschallbad-einweisung/releases) mit Datums-Version (`vJJJJ.MM.TT`) und den PDFs.
