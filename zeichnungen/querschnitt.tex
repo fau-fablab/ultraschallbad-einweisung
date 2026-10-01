@@ -1,0 +1,74 @@
+% Schnitt durch das Ultraschallbad Emmi-30HC, oben richtig, unten falsch.
+% Maßstab etwa 1,1 cm = 50 mm (Wanne innen ca. 240 x 135 x 100 mm,
+% Korb ca. 205 x 110 x 75 mm), eigene Zeichnung.
+\begin{tikzpicture}[x=1.1cm, y=1.1cm,
+		font=\footnotesize,
+		gehaeuse/.style={draw=black!70, fill=black!8, line width=0.6pt},
+		wanne/.style={draw=black, line width=1pt},
+		wasser/.style={fill=blue!15},
+		korb/.style={draw=black!80, line width=0.8pt, dash pattern=on 2pt off 1pt},
+		teil/.style={draw=black, fill=black!45},
+		wandler/.style={draw=black, fill=fablab!60},
+		beschriftung/.style={align=left, anchor=west, inner sep=1pt},
+		pfeil/.style={-latex, black!70, line width=0.5pt},
+	]
+
+	% ---------- Gerät zeichnen: \bad{Füllhöhe}
+	\newcommand{\bad}[1]{%
+		\draw[gehaeuse] (-0.4,-0.9) rectangle (5.2,2.0);
+		\fill[white] (0,0) rectangle (4.8,2.0);
+		\fill[wasser] (0,0) rectangle (4.8,#1);
+		\draw[blue!50, line width=0.6pt] (0,#1) -- (4.8,#1);
+		\draw[wanne] (0,2.0) -- (0,0) -- (4.8,0) -- (4.8,2.0);
+		% Füllmarke ca. 1 cm unter dem Rand
+		\draw[red!70!black, line width=1pt] (4.8,1.8) -- (4.55,1.8);
+		% Ultraschallwandler unter dem Wannenboden
+		\foreach \x in {1.0,2.4,3.8} {\draw[wandler] (\x-0.3,-0.05) rectangle (\x+0.3,-0.4);}
+		% Lüftungsschlitze im Gehäuseboden
+		\foreach \x in {0.6,1.0,...,4.2} {\draw[black!70, line width=1pt] (\x,-0.9) -- (\x+0.2,-0.9);}
+	}
+
+	% =============== oben: richtig =================
+	\begin{scope}
+		\bad{1.8}
+		% Schallwellen
+		\foreach \x in {1.0,2.4,3.8} {
+			\foreach \r in {0.15,0.3} {\draw[fablab!70, line width=0.4pt] (\x-\r*1.6,\r) arc[start angle=180, end angle=0, x radius=\r*1.6, y radius=\r*0.5];}
+		}
+		% Einhängekorb, hängt am Rand und berührt den Boden nicht
+		\draw[korb] (0.35,2.1) -- (0.35,0.5) -- (4.45,0.5) -- (4.45,2.1);
+		\draw[black!80, line width=0.8pt] (0.35,2.1) -- (0.35,2.18) -- (-0.15,2.18) -- (-0.15,1.95);
+		\draw[black!80, line width=0.8pt] (4.45,2.1) -- (4.45,2.18) -- (4.95,2.18) -- (4.95,1.95);
+		% Reinigungsgut im Korb, nicht gestapelt
+		\draw[teil, rounded corners=1pt] (0.8,0.55) rectangle (2.0,0.8);
+		\draw[teil] (2.5,0.55) rectangle (2.9,1.0);
+		\draw[teil] (3.4,0.68) circle (0.13);
+		\draw[teil] (3.85,0.68) circle (0.13);
+
+		\node[font=\bfseries, text=green!45!black, anchor=east] at (-0.7,0.6) {\checkmark\ richtig};
+
+		% Beschriftungen
+		\draw[pfeil] (5.6,1.8) -- (4.62,1.8);
+		\node[beschriftung] at (5.6,1.8) {Füllmarke, ca.\ 1\,cm\\unter dem Rand};
+		\draw[pfeil] (5.6,0.9) -- (4.5,0.9);
+		\node[beschriftung] at (5.6,0.9) {Einhängekorb hängt am Rand,\\ca.\ 2,5\,cm über dem Boden};
+		\draw[pfeil] (5.6,-0.25) -- (3.85,-0.25);
+		\node[beschriftung] at (5.6,-0.25) {3 Ultraschallwandler\\(ca.\ 38\,kHz)};
+		\draw[pfeil] (5.6,-1.05) -- (4.4,-0.93);
+		\node[beschriftung] at (5.6,-1.05) {Lüftungsschlitze im\\Boden: trocken halten};
+	\end{scope}
+
+	% =============== unten: falsch =================
+	\begin{scope}[yshift=-4.4cm]
+		\bad{0.8}
+		% Teil liegt direkt auf dem Wannenboden
+		\draw[teil, rounded corners=1pt] (1.8,0) rectangle (3.2,0.3);
+
+		\node[font=\bfseries, text=red!70!black, anchor=east] at (-0.7,0.6) {\(\times\)\ falsch};
+
+		\draw[pfeil] (5.6,0.8) -- (4.62,0.8);
+		\node[beschriftung] at (5.6,0.8) {Wasser unter\\der Marke};
+		\draw[pfeil] (5.6,0.0) -- (3.25,0.15);
+		\node[beschriftung] at (5.6,0.0) {Teil ohne Korb\\auf dem Boden};
+	\end{scope}
+\end{tikzpicture}

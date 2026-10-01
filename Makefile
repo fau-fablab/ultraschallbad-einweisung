@@ -1,2 +1,2 @@
-TARGET=Einweisung_Ultraschallbad Einweisungsliste_Ultraschallbad
+TARGET=Einweisung_Ultraschallbad Einweisungsliste_Ultraschallbad Betriebsanweisung_Ultraschallreiniger
 include fablab-document/Makefile.include

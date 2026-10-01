@@ -1,0 +1,34 @@
+% Arbeitsablauf am Ultraschallbad. Rot umrandete Schritte: vorher roten
+% Hauptschalter ausschalten bzw. Netzstecker ziehen.
+\begin{tikzpicture}[
+		font=\footnotesize,
+		schritt/.style={draw=fablab, line width=0.8pt, rounded corners=2pt, align=center,
+			text width=3.25cm, minimum height=1.2cm, inner sep=3pt,
+			execute at begin node={\hyphenpenalty=10000}},
+		aus/.style={draw=red!75!black, line width=1.4pt},
+		nr/.style={circle, fill=fablab, text=white, font=\bfseries\footnotesize, inner sep=1pt, minimum size=4.5mm},
+		pfeil/.style={-latex, line width=0.8pt, fablab},
+		node distance=0.55cm,
+	]
+	\node[schritt, aus] (s1) {\textbf{Befüllen}\\Stecker gezogen, Wasser bis zur Marke};
+	\node[schritt, right=of s1] (s2) {\textbf{Reiniger dosieren}\\Schutzbrille und Handschuhe};
+	\node[schritt, right=of s2] (s3) {\textbf{Entgasen}\\ca.\ 10 Minuten ohne Teile laufen lassen};
+	\node[schritt, aus, right=of s3] (s4) {\textbf{Einlegen}\\Teile in den Korb, Korb einhängen};
+	\node[schritt, below=0.6cm of s4] (s5) {\textbf{Reinigen}\\Deckel drauf, Zeit einstellen, alle 10 Minuten nachsehen};
+	\node[schritt, aus, left=of s5] (s6) {\textbf{Entnehmen}\\Korb herausheben, Teile abspülen und trocknen};
+	\node[schritt, aus, left=of s6] (s7) {\textbf{Entleeren}\\Stecker ziehen, ausleeren, auswischen};
+	\node[schritt, left=of s7] (s8) {\textbf{Aufräumen}\\in die Schublade, Reiniger bezahlen};
+
+	\foreach \i in {1,...,8} {\node[nr] at (s\i.north west) {\i};}
+	\draw[pfeil] (s1) -- (s2);
+	\draw[pfeil] (s2) -- (s3);
+	\draw[pfeil] (s3) -- (s4);
+	\draw[pfeil] (s4) -- (s5);
+	\draw[pfeil] (s5) -- (s6);
+	\draw[pfeil] (s6) -- (s7);
+	\draw[pfeil] (s7) -- (s8);
+
+	\node[anchor=north west, align=left, font=\footnotesize] at ([yshift=-3mm]s8.south west)
+		{\tikz\draw[red!75!black, line width=1.4pt, rounded corners=1pt] (0,0) rectangle (0.5,0.25);\
+		 Rot umrandet: vorher den \textbf{roten Hauptschalter} ausschalten, beim Befüllen und Entleeren zusätzlich den \textbf{Netzstecker} ziehen.};
+\end{tikzpicture}

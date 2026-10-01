@@ -1,0 +1,85 @@
+% =====================================================================
+%  Betriebsanweisung (Gefahrstoff) EMAG EM-080 Universalreiniger
+%  Eigenes PDF: Betriebsanweisung_Ultraschallreiniger.tex,
+%  Seite in der Einweisung über \BAseite
+%  Grundlage: Sicherheitsdatenblatt EMAG EM-080, überarbeitet am 15.05.2023:
+%  Skin Irrit. 2 (H315), Eye Dam. 1 (H318), GHS05, Signalwort Gefahr,
+%  P280, P305+P351+P338, pH 13,2 (Konzentrat) bzw. 11,1 (1 %), WGK 1.
+%  Wird ein anderer Reiniger verwendet, diese BA an dessen SDB anpassen.
+%  Das Sicherheitsdatenblatt muss im FabLab vorliegen.
+% =====================================================================
+\BAsetup{
+  typ=gefahrstoff,
+  titel={EMAG EM-080 Universalreiniger -- alkalisches Reinigungskonzentrat für Ultraschallbäder},
+  kurztitel={Gefahrstoff: Ultraschallreiniger EMAG EM-080},
+  taetigkeit={Dosieren des Konzentrats, Reinigen im Ultraschallbad, Entleeren, Lagern},
+  nummer=BA-GS-02,
+  stand=01.10.2026,
+  verantwortlich={Name der verantwortlichen Person},
+  signalwort=GEFAHR,
+}
+
+\BAkopf
+
+% ---------- 1 Gefahren -----------------------------------------------
+\BAblock{GEFAHREN FÜR MENSCH UND UMWELT}{GHS05}{%
+  \begin{itemize}
+    \item \textbf{Verursacht schwere Augenschäden} (H318). Schon ein Spritzer
+          Konzentrat kann das Auge dauerhaft schädigen.
+    \item Verursacht Hautreizungen (H315).
+    \item Das Konzentrat ist eine starke Lauge (pH ca.\ 13), auch die
+          gebrauchsfertige Lösung ist alkalisch (pH ca.\ 11).
+    \item Reagiert heftig und unter Erwärmung mit konzentrierten Säuren.
+    \item Schwach wassergefährdend (WGK 1).
+  \end{itemize}}
+
+% ---------- 2 Schutzmaßnahmen ----------------------------------------
+\BAblock{SCHUTZMASSNAHMEN UND VERHALTENSREGELN}{M004,M009}{%
+  \begin{itemize}
+    \item Beim Umgang mit dem Konzentrat \textbf{Schutzbrille} und
+          \textbf{Nitrilhandschuhe} tragen.
+    \item Nur so viel dosieren wie nötig: 1--3\,\%, also 30--90\,ml auf
+          3\,l Wasser. Mit Messbecher dosieren, nicht aus der Flasche gießen.
+    \item Nicht mit anderen Reinigern, Säuren oder Lösemitteln mischen.
+    \item Nicht in das Bad greifen, Teile nur im Korb herausnehmen und danach
+          mit Wasser abspülen.
+    \item Nach der Arbeit Hände waschen. Essen und Trinken verboten.
+    \item Nur im Originalbehälter lagern, Flasche verschlossen halten,
+          nie in Lebensmittelgefäße umfüllen.
+  \end{itemize}}
+
+% ---------- 3 Gefahrfall ---------------------------------------------
+\BAblock{VERHALTEN IM GEFAHRFALL}{W001}{%
+  \begin{itemize}
+    \item Verschüttetes Konzentrat mit Papiertüchern oder Bindemittel
+          aufnehmen, Fläche mit viel Wasser nachwischen, Betreuer informieren.
+    \item Verschmutzte Kleidung sofort ausziehen.
+    \item Das Produkt ist nicht brennbar. Bei einem Brand in der Umgebung
+          mit Wasser, Schaum oder Sprühwasser löschen.
+          \textbf{Feuerwehr: 112}
+  \end{itemize}}
+
+% ---------- 4 Erste Hilfe --------------------------------------------
+\BAblock{ERSTE HILFE}{E003,E011}{%
+  \begin{itemize}
+    \item \textbf{Augen:} sofort 10--15 Min.\ bei geöffnetem Lid unter
+          fließendem Wasser spülen, Kontaktlinsen entfernen, \textbf{Augenarzt}.
+    \item \textbf{Haut:} sofort mit viel Wasser und Seife abwaschen.
+    \item \textbf{Einatmen von Sprühnebel:} an die frische Luft, Arzt.
+    \item \textbf{Verschlucken:} Mund ausspülen, reichlich Wasser trinken,
+          kein Erbrechen herbeiführen, Arzt.
+    \item Dem Arzt das Sicherheitsdatenblatt oder die Flasche zeigen.
+  \end{itemize}\vspace{1.5mm}
+  \textbf{Notruf: 112}\qquad Giftnotruf München: 089\,/\,19240\qquad
+  FabLab: 09131\,/\,85\,28013}
+
+% ---------- 5 Entsorgung (mit Fußzeile) --------------------------------
+\BAletzterblock{SACHGERECHTE ENTSORGUNG}{}{%
+  \begin{itemize}
+    \item Gebrauchte, verdünnte Reinigungslösung mit reichlich Wasser in
+          den Ausguss.
+    \item \textbf{Konzentrat nicht in den Ausguss.} Reste und alte Flaschen
+          an einen Betreuer geben, Entsorgung als Sonderabfall
+          (Abfallschlüssel 20\,01\,29).
+    \item Vollständig entleerte, ausgespülte Flaschen in die Wertstoffsammlung.
+  \end{itemize}}
